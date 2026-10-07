@@ -63,7 +63,18 @@ class Character:
     def strike(self,other:Character):
         strike_strength = self.get_strike_strength()
         other.health -= strike_strength
-        print(f"{self.name} stroke {other.name} with a strength of {strike_strength}")
+        msg = f"{self.name} > "
+        for _ in range(strike_strength):
+            msg += " 🗡 "
+        msg += f" > {other.name}"
+        print(msg)
+        print("\n")
+        
+    def loot(self)->dict:
+        loot_content = {"gold":self.gold,"leather":self.leather}
+        self.gold = 0
+        self.leather = 0
+        return loot_content
         
             
                
